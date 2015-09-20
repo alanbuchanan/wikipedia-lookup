@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/modules/css/angular-material-layout.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="script.js"></script>
+
+    <title>Wikipedia Lookup</title>
+</head>
+<body ng-controller="MainCtrl">
+
+<!--Header-->
+<header>
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout-align="center">
+            alanbuchanan's Wikipedia Lookup
+        </div>
+
+    </md-toolbar>
+</header>
+
+<section layout="column" layout-align="center" class="md-container">
+
+    <!--Search form-->
+    <md-content layout="row" layout-align="center">
+        <form ng-submit="update(search)">
+            <md-input-container>
+                <label for="search"><i class="fa fa-search"></i> Search</label>
+                <input type="text" id="search" ng-model="search" ng-keydown="removeNothingFound()"/>
+            </md-input-container>
+        </form>
+    </md-content>
+
+    <!--Loading circle-->
+    <div layout="row" layout-align="center">
+        <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <!--Nothing found from search query-->
+    <div ng-show="notFound" layout="row" layout-align="center">
+        <h4>Nothing found for {{search}}!</h4>
+    </div>
+
+    <!--List of results-->
+    <md-list layout-align="center">
+        <md-list-item ng-repeat="result in results" class="md-2-line md-whiteframe-z2" layout="row">
+            <div class="md-list-item-text" layout="column">
+                <h2><a href="{{wikiLinkNoSpaces(result.title)}}">{{result.title}}</a></h2>
+
+                <p id="description" ng-bind-html="result.snippet + '...' | noHTMLTags"></p>
+            </div>
+        </md-list-item>
+    </md-list>
+</section>
+
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+</body>
+</html>

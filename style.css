@@ -1,0 +1,65 @@
+body {
+    font-family: 'EB Garamond', serif;
+    background-color: #eeeeee;
+}
+
+section {
+    display: flex;
+}
+
+md-list {
+    background: #eeeeee;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.2s;
+    color: #009688;
+}
+
+a:hover {
+    color: #6A2E2E;
+}
+
+input, label {
+    font-size: 1.5em;
+    /*border: 1px solid black;*/
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+#description {
+    font-family: 'Questrial', sans-serif;
+}
+
+.ng-enter {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+    margin-left: 100%;
+}
+
+.ng-enter-active {
+    margin-left: 0;
+}
+
+.ng-leave {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+    margin-left: 0;
+}
+
+.ng-leave-active {
+    margin-left: 100%;
+}
+
+.ng-move {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+    background: gold;
+}
+
+.ng-move-active {
+    background: #fff;
+}
