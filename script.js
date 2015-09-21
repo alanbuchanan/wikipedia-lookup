@@ -47,6 +47,5 @@ app.filter('noHTMLTags', function ($sce) {
 
 app.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-        .accentPalette('amber');
+        .primaryPalette('teal');
 });
